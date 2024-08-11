@@ -1,36 +1,37 @@
 from django.contrib import admin
-from .models import Portfolio, PortfolioHolding
+from .models import Portfolio, PortfolioTransaction
 
 
-class PortfolioHoldingInline(admin.TabularInline):
-    model = PortfolioHolding
-    extra = 1
-    readonly_fields = ('cost_basis',)
-    fields = ('asset', 'quantity', 'purchase_price', 'cost_basis')
-    can_delete = True
-    verbose_name = "Holding"
-    verbose_name_plural = "Holdings"
+class PortfolioTransactionAdmin(admin.ModelAdmin):
+    list_display = ('portfolio', 'asset', 'transaction_type', 'quantity', 'price_at_transaction', 'transaction_date', 'total_value')
+    search_fields = ('portfolio__name', 'asset__symbol', 'transaction_type')
+    list_filter = ('transaction_type', 'transaction_date', 'portfolio')
+    ordering = ('-transaction_date',)
+    readonly_fields = ('portfolio', 'asset', 'transaction_type', 'quantity', 'price_at_transaction', 'transaction_date', 'fees', 'total_value',)
+    autocomplete_fields = ['portfolio', 'asset']
+    list_per_page = 50
+    # list_editable = ('quantity', 'price_at_transaction', 'transaction_date')
+
+    class PortfolioTransactionInline(admin.TabularInline):
+        model = PortfolioTransaction
+        extra = 1
+        autocomplete_fields = ['asset']
+        ordering = ('-transaction_date',)  # Orders inline transactions from newest to oldest
+
+
+admin.site.register(PortfolioTransaction, PortfolioTransactionAdmin)
+
 
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ('name', 'total_value')  # Add a method for total value calculation if needed
+    list_display = ('name','total_value')
     search_fields = ('name',)
-    inlines = [PortfolioHoldingInline]
+    ordering = ('name',)
+    inlines = [PortfolioTransactionAdmin.PortfolioTransactionInline]
 
     def total_value(self, obj):
-        # Example method to calculate the total value of the portfolio
-        total = sum(
-            holding.quantity * holding.asset.price_usd for holding in obj.portfolioholding_set.all()
-        )
-        return f"${total:,.2f}"
-    total_value.short_description = 'Total Value'
-
-
-class PortfolioHoldingAdmin(admin.ModelAdmin):
-    list_display = ('portfolio', 'asset', 'quantity', 'purchase_price', 'cost_basis')
-    list_filter = ('portfolio', 'asset')
-    search_fields = ('portfolio__name', 'asset__symbol')
-    readonly_fields = ('cost_basis',)
+        return obj.total_value
+    
+    total_value.short_description = 'Total Portfolio Value'
 
 admin.site.register(Portfolio, PortfolioAdmin)
-admin.site.register(PortfolioHolding, PortfolioHoldingAdmin)
 

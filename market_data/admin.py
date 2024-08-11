@@ -4,7 +4,7 @@ from .models import Asset
 # Register your models here.
 
 class AssetAdmin(admin.ModelAdmin):
-    list_display = ('symbol', 'name', 'price_usd', 'last_updated')
+    list_display = ('symbol', 'name', 'price_usd', 'market_cap_usd', 'last_updated')
     list_filter = ('source', 'last_updated')
     search_fields = ('symbol', 'name')
     ordering = ('symbol',)

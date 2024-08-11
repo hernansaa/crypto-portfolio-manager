@@ -15,7 +15,7 @@ class Asset(models.Model):
     fetched_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.symbol} ({self.name})"
+        return f"{self.symbol} ({self.name}) ({self.source})"
 
     class Meta:
         verbose_name = "Asset"
