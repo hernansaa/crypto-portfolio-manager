@@ -32,4 +32,5 @@ Follow these steps to get the project up and running locally.
 
   Create a virtual environment to isolate the project dependencies:
 
+  ```bash
   python -m venv venv
