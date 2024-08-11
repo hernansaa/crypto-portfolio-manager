@@ -37,10 +37,10 @@ Follow these steps to get the project up and running locally.
 3. Activate the Virtual Environment
 
     On Windows:
-    ```bash
-    venv\Scripts\activate
+     ```bash
+     venv\Scripts\activate
     
     On macOS/Linux:
-    ```bash
-    source venv/bin/activate
+     ```bash
+     source venv/bin/activate
 
