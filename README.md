@@ -33,3 +33,14 @@ Follow these steps to get the project up and running locally.
    Create a virtual environment to isolate the project dependencies:
    ```bash
    python -m venv venv
+
+3. Activate the Virtual Environment
+
+    On Windows:
+    ```bash
+    venv\Scripts\activate
+    
+    On macOS/Linux:
+    ```bash
+    source venv/bin/activate
+
