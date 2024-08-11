@@ -44,3 +44,81 @@ Follow these steps to get the project up and running locally.
      ```bash
      source venv/bin/activate
 
+4. **Install Dependencies**
+
+Install the project dependencies from requirements.txt:
+
+bash
+Copiar código
+pip install -r requirements.txt
+
+5. **Apply Migrations**
+
+Run the database migrations to set up the initial schema:
+
+bash
+Copiar código
+python manage.py migrate
+
+6. **Create a Superuser**
+
+Create a superuser to access the Django admin interface:
+
+bash
+Copiar código
+python manage.py createsuperuser
+
+7. **Run the Development Server**
+
+Start the development server to run the application locally:
+
+bash
+Copiar código
+python manage.py runserver
+The application will be available at http://127.0.0.1:8000/.
+
+### Project Structure
+
+crypto_portfolio_manager/: Main project directory.
+market_data/: App for handling asset and market data.
+portfolio/: App for managing user portfolios and holdings.
+manage.py: Django's command-line utility for administrative tasks.
+requirements.txt: File listing the project's dependencies.
+
+### API Endpoints
+GET /api/assets/: Retrieve a list of all assets.
+GET /api/assets/{id}/: Retrieve details for a specific asset.
+GET /api/portfolios/: Retrieve a list of all portfolios.
+GET /api/portfolios/{id}/: Retrieve details for a specific portfolio.
+
+
+### Contributing
+Contributions are welcome! Please follow the contribution guidelines if you’d like to contribute to this project.
+
+### License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+### Contact
+For any questions or feedback, please contact your email.
+
+### **Instructions for Use:**
+1. **Replace Placeholder Text**: 
+   - Change `yourusername` to your GitHub username.
+   - Replace `[your email](mailto:your.email@example.com)` with your actual email address.
+   - Update the links for contribution guidelines and license if you have specific files or details.
+
+2. **Save and Upload**: 
+   - Save this content in a file named `README.md` and upload it to the root of your repository on GitHub.
+
+3. **Enhance as Needed**:
+   - Feel free to add more details specific to your project, such as additional configuration steps or more detailed API documentation.
+
+This README.md should provide a solid foundation for anyone who wants to understand and contribute to your project.
+
+
+
+
+
+
+
+
