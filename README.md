@@ -77,7 +77,7 @@ Copiar código
 python manage.py runserver
 The application will be available at http://127.0.0.1:8000/.
 
-### Project Structure
+## Project Structure
 
 crypto_portfolio_manager/: Main project directory.
 market_data/: App for handling asset and market data.
@@ -85,23 +85,23 @@ portfolio/: App for managing user portfolios and holdings.
 manage.py: Django's command-line utility for administrative tasks.
 requirements.txt: File listing the project's dependencies.
 
-### API Endpoints
+## API Endpoints
 GET /api/assets/: Retrieve a list of all assets.
 GET /api/assets/{id}/: Retrieve details for a specific asset.
 GET /api/portfolios/: Retrieve a list of all portfolios.
 GET /api/portfolios/{id}/: Retrieve details for a specific portfolio.
 
 
-### Contributing
+## Contributing
 Contributions are welcome! Please follow the contribution guidelines if you’d like to contribute to this project.
 
-### License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-### Contact
+## Contact
 For any questions or feedback, please contact your email.
 
-### **Instructions for Use:**
+## **Instructions for Use:**
 1. **Replace Placeholder Text**: 
    - Change `yourusername` to your GitHub username.
    - Replace `[your email](mailto:your.email@example.com)` with your actual email address.
