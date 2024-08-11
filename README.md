@@ -24,14 +24,15 @@ Follow these steps to get the project up and running locally.
 1. **Clone the Repository**
 
    First, clone the repository to your local machine:
-   ```bash
+   ```
    git clone https://github.com/yourusername/crypto-portfolio-manager.git
    cd crypto-portfolio-manager
+   ```
 
 2. **Create a Virtual Environment**
 
    Create a virtual environment to isolate the project dependencies:
-   ```bash
+   ```
    python -m venv venv
    ```
 
@@ -43,7 +44,7 @@ Follow these steps to get the project up and running locally.
      ```
     
     On macOS/Linux:
-     ```bash
+     ```
      source venv/bin/activate
      ```
 
