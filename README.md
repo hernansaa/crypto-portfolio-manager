@@ -57,28 +57,25 @@ Follow these steps to get the project up and running locally.
 
 5. **Apply Migrations**
 
-Run the database migrations to set up the initial schema:
-
-bash
-Copiar código
-python manage.py migrate
+    Run the database migrations to set up the initial schema:
+    ```
+    python manage.py migrate
+    ```
 
 6. **Create a Superuser**
 
-Create a superuser to access the Django admin interface:
-
-bash
-Copiar código
-python manage.py createsuperuser
+    Create a superuser to access the Django admin interface:
+    ```
+    python manage.py createsuperuser
+    ```
 
 7. **Run the Development Server**
 
-Start the development server to run the application locally:
-
-bash
-Copiar código
-python manage.py runserver
-The application will be available at http://127.0.0.1:8000/.
+    Start the development server to run the application locally:
+    ```
+    python manage.py runserver
+    ```
+    The application will be available at http://127.0.0.1:8000/.
 
 ## Project Structure
 
