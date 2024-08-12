@@ -52,9 +52,9 @@ Follow these steps to get the project up and running locally.
 
 Install the project dependencies from requirements.txt:
 
-bash
-Copiar código
-pip install -r requirements.txt
+    ```
+    pip install -r requirements.txt
+    ```
 
 5. **Apply Migrations**
 
