@@ -50,8 +50,7 @@ Follow these steps to get the project up and running locally.
 
 4. **Install Dependencies**
 
-Install the project dependencies from requirements.txt:
-
+    Install the project dependencies from requirements.txt:
     ```
     pip install -r requirements.txt
     ```
