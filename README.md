@@ -79,17 +79,18 @@ Follow these steps to get the project up and running locally.
 
 ## Project Structure
 
-crypto_portfolio_manager/: Main project directory.
-market_data/: App for handling asset and market data.
-portfolio/: App for managing user portfolios and holdings.
-manage.py: Django's command-line utility for administrative tasks.
-requirements.txt: File listing the project's dependencies.
+- crypto_portfolio_manager/: Main project directory.
+- market_data/: App for handling asset and market data.
+- portfolio/: App for managing user portfolios and holdings.
+- manage.py: Django's command-line utility for administrative tasks.
+- requirements.txt: File listing the project's dependencies.
 
 ## API Endpoints
-GET /api/assets/: Retrieve a list of all assets.
-GET /api/assets/{id}/: Retrieve details for a specific asset.
-GET /api/portfolios/: Retrieve a list of all portfolios.
-GET /api/portfolios/{id}/: Retrieve details for a specific portfolio.
+
+- GET /api/assets/: Retrieve a list of all assets.
+- GET /api/assets/{id}/: Retrieve details for a specific asset.
+- GET /api/portfolios/: Retrieve a list of all portfolios.
+- GET /api/portfolios/{id}/: Retrieve details for a specific portfolio.
 
 
 ## Contributing
