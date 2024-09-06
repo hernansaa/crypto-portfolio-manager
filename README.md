@@ -82,7 +82,7 @@ Follow these steps to get the project up and running locally.
 - crypto_portfolio_manager/: Main project directory.
 - market_data/: App for handling asset and market data.
 - portfolio/: App for managing user portfolios and holdings.
-- api/: App for managing the configuring the Rest API.
+- api/: App for managing and configuring the Rest API.
 - manage.py: Django's command-line utility for administrative tasks.
 - requirements.txt: File listing the project's dependencies.
 

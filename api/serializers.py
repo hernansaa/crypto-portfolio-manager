@@ -30,8 +30,15 @@ class PortfolioSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PortfolioTrasactionSerializer(serializers.HyperlinkedModelSerializer):
-    #asset = serializers.HyperlinkedRelatedField(view_name='asset-detail', queryset=Asset.objects.all())
+    portfolio = serializers.SerializerMethodField("get_portfolio")
+    asset = serializers.SerializerMethodField("get_asset")
 
     class Meta:
         model = PortfolioTransaction
         fields = ['url', 'portfolio', 'asset', 'transaction_type', 'quantity', 'transaction_date', 'price_at_transaction', 'fees', 'total_value']
+
+    def get_asset(self,obj):
+        return obj.asset.name
+    
+    def get_portfolio(self,obj):
+        return obj.portfolio.name
