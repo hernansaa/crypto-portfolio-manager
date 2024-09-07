@@ -1,0 +1,32 @@
+FROM ubuntu:latest
+
+LABEL mantainer="hernansaa88@gmail.com"
+
+# Actualiza los paquetes e instala Python, pip, y dependencias del sistema
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-venv \
+    python3-pip
+
+COPY . /app
+
+WORKDIR /app
+
+# Ensures that the python and pip executables used
+# in the image will be those from our virtualenv.
+ENV PATH="/venv/bin:$PATH"
+
+# Crea virtual enviroment y activarlo
+RUN python3 -m venv venv
+
+# Activa el virtual enviriment, instala/actualiza pip e installa las dependencias del proyecto.
+RUN /bin/bash -c "source venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt --no-cache-dir"
+
+# Expone el servidor web de django en el puerto 8000
+EXPOSE 8000
+
+# Ejecutar los tests unitarios
+RUN /bin/bash -c "source venv/bin/activate && python3 manage.py test"
+
+# Comando para iniciar el servidor con el entorno virtual activado
+CMD ["/bin/bash", "-c", "source venv/bin/activate && python3 manage.py runserver 0.0.0.0:8000"]
