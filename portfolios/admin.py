@@ -7,7 +7,7 @@ class PortfolioTransactionAdmin(admin.ModelAdmin):
     search_fields = ('portfolio__name', 'asset__symbol', 'transaction_type')
     list_filter = ('transaction_type', 'transaction_date', 'portfolio')
     ordering = ('-transaction_date',)
-    readonly_fields = ('portfolio', 'asset', 'transaction_type', 'quantity', 'price_at_transaction', 'transaction_date', 'fees', 'total_value',)
+    readonly_fields = ('total_value',)
     autocomplete_fields = ['portfolio', 'asset']
     list_per_page = 50
     # list_editable = ('quantity', 'price_at_transaction', 'transaction_date')
