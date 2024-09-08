@@ -1,0 +1,13 @@
+services:
+  web:
+    build: . # crea nueva imagen usando el Dockerfile en este directorio
+    container_name: web
+    image: crypto-portfolio-manager:latest
+    command: python manage.py runserver 0.0.0.0:8000
+    # Considerar si es necesario montar un volumen
+    # volumes: 
+    #   - ./app/:/usr/src/app
+    ports:
+      - 8000:8000
+    env_file:
+      - .env.dev
