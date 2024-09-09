@@ -158,6 +158,8 @@ PORT = os.getenv("PORT", 8000)  # Default to port 8000 if PORT is not set
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS').split(' ')
 
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(' ')
+
 
 DATABASES = {
     "default": {
@@ -169,3 +171,4 @@ DATABASES = {
         "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
+
