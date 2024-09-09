@@ -19,5 +19,10 @@ services:
     - POSTGRES_USER=hello_django
     - POSTGRES_PASSWORD=hello_django
     - POSTGRES_DB=hello_django_prod
+    volumes:
+      - postgres_data:/var/lib/postgres/data/
     ports:
       - "5432:5432"
+
+volumes:
+  postgres_data:
