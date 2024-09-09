@@ -63,7 +63,7 @@ class PorfolioTransactionViewSet(viewsets.ModelViewSet):
     """
     queryset = PortfolioTransaction.objects.all().order_by('-transaction_date')
     serializer_class = PortfolioTrasactionSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
 
 @api_view(['GET'])
