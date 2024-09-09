@@ -61,8 +61,14 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USER }}/user-service:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
-          # build-args: |
-          #   DB_HOST=${{ secrets.DB_HOST }}
-          #   DB_USER=${{ secrets.DB_USER }}
-          #   DB_PASSWORD=${{ secrets.DB_PASSWORD }}
-          #   DB_DATABASE=${{ secrets.DB_DATABASE }}
+  
+  ci:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Deploy
+        # Only run this step if the branch is main
+        if: github.ref == 'refs/heads/development'
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url"
