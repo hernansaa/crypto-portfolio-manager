@@ -152,6 +152,8 @@ load_dotenv(BASE_DIR / '.env.dev')
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG')
 
+PORT = os.getenv("PORT", 8000)  # Default to port 8000 if PORT is not set
+
 # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS').split(' ')
