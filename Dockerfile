@@ -46,8 +46,6 @@ WORKDIR /usr/src/app
 # Expose the Django web server port
 EXPOSE 8000
 
-# Set the default command to run Django
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 
 
