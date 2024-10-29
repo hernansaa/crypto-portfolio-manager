@@ -81,5 +81,4 @@ jobs:
 
           # Docker compose
           sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml down
-          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml build
-          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d
+          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up --force-recreate -d
