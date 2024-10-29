@@ -62,7 +62,7 @@ jobs:
 
     steps:
       
-    - name: executing remote ssh commands using ssh key
+    - name: Install Docker and run docker compose file via ssh
       uses: appleboy/ssh-action@v1.1.0
       with:
         host: ${{ secrets.DIGITALOCEAN_HOST }}
@@ -79,4 +79,4 @@ jobs:
           sudo systemctl status docker
 
           # Docker compose 
-          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --build --force-recreate
+          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --pull --build --force-recreate
