@@ -1,7 +1,8 @@
 services:
   web:
-    image: hernansaa/crypto-portfolio-manager:latest  # download the image from Docker Hub
+    build: . # crea imagen usando el Dockerfile en este directorio
     container_name: crypto-portfolio-manager-api
+    image: crypto-portfolio-manager:latest
     # command: sh -c "python manage.py migrate && gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3"
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
