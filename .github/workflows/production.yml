@@ -63,7 +63,7 @@ jobs:
     steps:
     
     - uses: actions/checkout@v4
-    - name: Copies docker-compose-prod file to VPS
+    - name: Copies docker-compose-prod file to VPS via SSH
       uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.DIGITALOCEAN_HOST }}
@@ -74,7 +74,7 @@ jobs:
         target: ~/crypto-portfolio-manager/
 
       
-    - name: Install Docker and run docker compose file via ssh
+    - name: Install Docker and run docker compose file via SSH
       uses: appleboy/ssh-action@v1.1.0
       with:
         host: ${{ secrets.DIGITALOCEAN_HOST }}
