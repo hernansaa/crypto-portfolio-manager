@@ -2,7 +2,7 @@ services:
   web:
     image: hernansaa/crypto-portfolio-manager:latest  # download the image from Docker Hub
     container_name: crypto-portfolio-manager
-    command: sh -c "./entrypoint.sh" 
+    command: sh -c "./entrypoint.sh"
     ports:
       - 8000:8000
     env_file:
