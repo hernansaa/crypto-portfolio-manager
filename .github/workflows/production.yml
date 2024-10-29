@@ -85,10 +85,10 @@ jobs:
           fi
           
           # Remove any existing image for a clean pull
-          if [ "$(sudo docker images -q hernansaa/sympan-starter-kit:latest)" ]; then
-            sudo docker rmi -f hernansaa/sympan-starter-kit:latest
+          if [ "$(sudo docker images -q hernansaa/crypto-portfolio-manager:latest)" ]; then
+            sudo docker rmi -f hernansaa/crypto-portfolio-manager:latest
           fi
           
           # Pull and run the latest image
-          sudo docker pull hernansaa/sympan-starter-kit
-          sudo docker run -d -p 8000:8000 --name sympan-starter-kit hernansaa/sympan-starter-kit:latest /bin/sh -c "python manage.py runserver 0.0.0.0:8000"
+          sudo docker pull hernansaa/crypto-portfolio-manager
+          sudo docker run -d -p 8000:8000 --name sympan-starter-kit hernansaa/crypto-portfolio-manager:latest /bin/sh -c "python manage.py runserver 0.0.0.0:8000"
