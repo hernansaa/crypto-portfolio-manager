@@ -78,5 +78,6 @@ jobs:
           sudo apt install -y docker-ce
           sudo systemctl status docker
 
-          # Docker compose 
-          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --pull --build --force-recreate
+          # Docker compose
+          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml pull
+          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --build --force-recreate
