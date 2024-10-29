@@ -48,5 +48,8 @@ RUN pip install --upgrade pip \
 
 WORKDIR /usr/src/app
 
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
 # Expose the Django web server port
 EXPOSE 8000
