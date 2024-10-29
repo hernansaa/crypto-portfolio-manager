@@ -75,7 +75,7 @@ jobs:
         target: ~/crypto-portfolio-manager/
 
     
-    - name: Generate .env.prod file on VPS
+    - name: Generate .env.prod file on VPS via SSH
       uses: appleboy/ssh-action@v1.1.0
       with:
         host: ${{ secrets.DIGITALOCEAN_HOST }}
