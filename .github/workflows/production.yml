@@ -70,10 +70,10 @@ jobs:
         username: ${{ secrets.DIGITALOCEAN_USER }}
         key: ${{ secrets.DIGITALOCEAN_KEY }}
         port: ${{ secrets.DIGITALOCEAN_PORT }}
-        source: "docker-compose.prod.yml"  # Adjust the path if necessary
-        target: "~/app/docker-compose.prod.yml"  # Target path on the server
+        source: "/docker-compose.prod.yml"  # Adjust the path if necessary
+        target: ~/app/docker-compose.prod.yml  # Target path on the server
       
-    - name: executing remote ssh commands using password
+    - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@v1.1.0
       with:
         host: ${{ secrets.DIGITALOCEAN_HOST }}
