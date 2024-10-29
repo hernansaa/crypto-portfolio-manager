@@ -92,3 +92,4 @@ jobs:
           # Pull and run the latest image
           sudo docker pull hernansaa/crypto-portfolio-manager
           # sudo docker run -d -p 8000:8000 --name crypto-portfolio-manager hernansaa/crypto-portfolio-manager:latest /bin/sh -c "python manage.py runserver 0.0.0.0:8000"
+          sudo docker compose -f docker-compose.prod.yml up -d --build
