@@ -64,11 +64,11 @@ jobs:
     steps:
 
     - name: List files in current directory
-      run: ls -la
+      run: ls -la ${{ github.workspace }}/
 
     - name: Check if docker-compose.prod.yml exists
       run: |
-        if [ -f "docker-compose.prod.yml" ]; then
+        if [ -f "${{ github.workspace }}/docker-compose.prod.yml" ]; then
           echo "File exists."
         else
           echo "File does not exist."
@@ -82,7 +82,7 @@ jobs:
         username: ${{ secrets.DIGITALOCEAN_USER }}
         key: ${{ secrets.DIGITALOCEAN_KEY }}
         port: ${{ secrets.DIGITALOCEAN_PORT }}
-        source: "/docker-compose.prod.yml"  # Adjust the path if necessary
+        source: "${{ github.workspace }}//docker-compose.prod.yml"  # Adjust the path if necessary
         target: ~/app/docker-compose.prod.yml  # Target path on the server
       
     - name: executing remote ssh commands using ssh key
