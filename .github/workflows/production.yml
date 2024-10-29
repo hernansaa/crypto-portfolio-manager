@@ -63,6 +63,18 @@ jobs:
 
     steps:
 
+    - name: List files in current directory
+      run: ls -la
+
+    - name: Check if docker-compose.prod.yml exists
+      run: |
+        if [ -f "docker-compose.prod.yml" ]; then
+          echo "File exists."
+        else
+          echo "File does not exist."
+          exit 1
+        fi
+
     - name: SSH to Digital Ocean
       uses: appleboy/scp-action@v0.1.7
       with:
