@@ -78,22 +78,6 @@ jobs:
           apt-cache policy docker-ce
           sudo apt install -y docker-ce
           sudo systemctl status docker
-          
-          # # Stop and remove any existing container with the same name
-          # if [ "$(sudo docker ps -aq -f name=crypto-portfolio-manager)" ]; then
-          #   sudo docker stop crypto-portfolio-manager
-          #   sudo docker rm crypto-portfolio-manager
-          # fi
-          
-          # # Remove any existing image for a clean pull
-          # if [ "$(sudo docker images -q hernansaa/crypto-portfolio-manager:latest)" ]; then
-          #   sudo docker rmi -f hernansaa/crypto-portfolio-manager:latest
-          # fi
-          
-          # Pull and run the latest image
-          # sudo docker pull hernansaa/crypto-portfolio-manager
-          # sudo docker run -d -p 8000:8000 --name crypto-portfolio-manager hernansaa/crypto-portfolio-manager:latest /bin/sh -c "python manage.py runserver 0.0.0.0:8000"
-          
+
           # Docker compose
-          cd ~/crypto-portfolio-manager/
-          sudo docker compose -f docker-compose-prod.yml up -d --build
+          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --build
