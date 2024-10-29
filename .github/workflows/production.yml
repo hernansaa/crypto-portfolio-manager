@@ -77,11 +77,15 @@ jobs:
           apt-cache policy docker-ce
           sudo apt install -y docker-ce
           sudo systemctl status docker
+
+          # Copy the docker-compose file from the repo
+          mkdir -p ~/app
+          echo "${{ github.workspace }}/docker-compose.prod.yml" > ~/app/docker-compose.prod.yml
           
           # Stop and remove any existing container with the same name
-          if [ "$(sudo docker ps -aq -f name=sympan-starter-kit)" ]; then
-            sudo docker stop sympan-starter-kit
-            sudo docker rm sympan-starter-kit
+          if [ "$(sudo docker ps -aq -f name=crypto-portfolio-manager)" ]; then
+            sudo docker stop crypto-portfolio-manager
+            sudo docker rm crypto-portfolio-manager
           fi
           
           # Remove any existing image for a clean pull
