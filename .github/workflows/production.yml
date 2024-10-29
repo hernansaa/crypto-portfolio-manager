@@ -80,5 +80,4 @@ jobs:
           sudo systemctl status docker
 
           # Docker compose
-          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml down
-          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up --force-recreate -d
+          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --build --force-recreate
