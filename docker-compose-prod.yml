@@ -1,6 +1,6 @@
 services:
   web:
-    image: hernansaa/crypto-portfolio-manager:latest  # download the image from Docker Hub
+    image: hernansaa/crypto-portfolio-manager:latest 
     container_name: crypto-portfolio-manager
     command: >
       sh -c "
