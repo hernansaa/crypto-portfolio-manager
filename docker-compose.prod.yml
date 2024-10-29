@@ -1,9 +1,10 @@
 services:
   web:
     build: . # crea imagen usando el Dockerfile en este directorio
-    container_name: django-api
+    container_name: crypto-portfolio-manager-api
     image: crypto-portfolio-manager:latest
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000" # Deberia configurar Gunicorn
+    # command: sh -c "python manage.py migrate && gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3"
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
     env_file:
@@ -16,9 +17,9 @@ services:
     container_name: postgres-db
     restart: always
     environment:
-    - POSTGRES_USER=hello_django
-    - POSTGRES_PASSWORD=hello_django
-    - POSTGRES_DB=hello_django_prod
+      POSTGRES_USER: hello_django
+      POSTGRES_PASSWORD: hello_django
+      POSTGRES_DB: hello_django_prod
     volumes:
       - postgres_data:/var/lib/postgres/data/
     ports:

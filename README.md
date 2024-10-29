@@ -19,6 +19,12 @@ Follow these steps to get the project up and running locally.
 - **Python**: Ensure you have Python 3.8+ installed on your system. [Download Python](https://www.python.org/downloads/)
 - **Pip**: Make sure you have pip installed for managing Python packages.
 
+### Docker Compose Option:
+
+   ```
+   sudo docker compose -f docker-compose.prod.yml up -d --build
+   ```
+
 ### Setup
 
 1. **Clone the Repository**
