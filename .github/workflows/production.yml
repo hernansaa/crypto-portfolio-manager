@@ -30,7 +30,6 @@ jobs:
     #   run: |
     #     python manage.py test
  
-        
   push_to_docker_hub_registry:
       
     runs-on: ubuntu-latest
@@ -79,5 +78,5 @@ jobs:
           sudo apt install -y docker-ce
           sudo systemctl status docker
 
-          # Docker compose
+          # Docker compose 
           sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --build --force-recreate
