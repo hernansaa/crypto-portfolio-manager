@@ -147,46 +147,46 @@ REST_FRAMEWORK = {
 }
 
 
-# ENVIROMENT VARIABLES (SET BY ME, NEEDS IMPROVEMENT TO BE MORE EFFICIENT TO SWITH ENVS)
+# ENVIROMENT VARIABLES (SET BY ME)
 
+# Base directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env_file = BASE_DIR / '.env.prod' if (BASE_DIR / '.env.prod').exists() else BASE_DIR / '.env.dev'
-load_dotenv(BASE_DIR / env_file)
+# Determine the environment file based on the existence of .env.prod
+env_file = BASE_DIR / '.env.prod'
+load_dotenv(env_file)
 
+# Environment variables
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG')
 
 PORT = os.getenv("PORT", 8000)  # Default to port 8000 if PORT is not set
 
-# 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
-# For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS').split(' ')
+# Allowed hosts
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(' ')
 
+# CSRF trusted origins
 csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS')
+CSRF_TRUSTED_ORIGINS = csrf_origins.split(' ') if csrf_origins else []
 
-if csrf_origins:
-    CSRF_TRUSTED_ORIGINS = csrf_origins.split(' ')
-else:
-    CSRF_TRUSTED_ORIGINS = []
-
-
+# Database configuration
 if (BASE_DIR / '.env.prod').exists():
-    DATABASES = {
-        "default": {
-            "ENGINE": os.getenv("SQL_ENGINE", "django.db.backends.postgresql"),
-            "NAME": os.getenv("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
-            "USER": os.getenv("SQL_USER", ""),
-            "PASSWORD": os.getenv("SQL_PASSWORD", ""),
-            "HOST": os.getenv("SQL_HOST", "localhost"),
-            "PORT": os.getenv("SQL_PORT", "5432"),
-        }
-    }
-else:
+    # Development settings
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
-
+else:
+    # Production settings
+    DATABASES = {
+        "default": {
+            "ENGINE": os.getenv("SQL_ENGINE", "django.db.backends.postgresql"),
+            "NAME": os.getenv("SQL_DATABASE"),
+            "USER": os.getenv("SQL_USER"),
+            "PASSWORD": os.getenv("SQL_PASSWORD"),
+            "HOST": os.getenv("SQL_HOST", "localhost"),
+            "PORT": os.getenv("SQL_PORT", "5432"),
+        }
+    }
