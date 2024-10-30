@@ -15,6 +15,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
+        fields = '__all__'
 
 
 class AssetSerializer(serializers.HyperlinkedModelSerializer):

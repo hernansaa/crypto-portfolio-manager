@@ -24,9 +24,9 @@ class UserAPITests(APITestCase):
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
+
 class GroupAPITests(APITestCase):
     def setUp(self):
-        # Create a test user and log them in for authenticated requests
         self.user = User.objects.create_user(username="testuser", email="test@example.com", password="testpass")
         self.client.login(username="testuser", password="testpass")
         
@@ -38,49 +38,57 @@ class GroupAPITests(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-# class PortfolioAPITests(APITestCase):
-#     def setUp(self):
-#         self.portfolio = Portfolio.objects.create(name="Test Portfolio", initial_value=1000, total_value=1500)
 
-#     def test_get_portfolios(self):
-#         url = reverse('portfolio-list')
-#         response = self.client.get(url)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
+class PortfolioAPITests(APITestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.client.login(username='testuser', password='testpass')
+        
+        self.portfolio = Portfolio.objects.create(name="Test Portfolio", initial_value=1000)
 
-# class PortfolioTransactionAPITests(APITestCase):
-#     def setUp(self):
-#         self.portfolio = Portfolio.objects.create(name="Test Portfolio", initial_value=1000, total_value=1500)
-#         self.asset = Asset.objects.create(name="Test Asset", price_usd=100)
-#         self.transaction = PortfolioTransaction.objects.create(
-#             portfolio=self.portfolio,
-#             asset=self.asset,
-#             transaction_type="buy",
-#             quantity=10,
-#             transaction_date="2023-01-01",
-#             price_at_transaction=100,
-#             fees=1.5,
-#             total_value=1000,
-#         )
+    def test_get_portfolios(self):
+        url = reverse('portfolio-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-#     def test_get_transactions(self):
-#         url = reverse('portfoliotransaction-list')
-#         response = self.client.get(url)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-#     def test_create_transaction(self):
-#         url = reverse('portfoliotransaction-list')
-#         data = {
-#             'portfolio': self.portfolio.id,
-#             'asset': self.asset.id,
-#             'transaction_type': 'buy',
-#             'quantity': 5,
-#             'transaction_date': '2023-01-02',
-#             'price_at_transaction': 105,
-#             'fees': 1.0,
-#             'total_value': 525
-#         }
-#         response = self.client.post(url, data)
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+class PortfolioTransactionAPITests(APITestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.client.login(username='testuser', password='testpass')
+
+        self.portfolio = Portfolio.objects.create(name="Test Portfolio", initial_value=1000)
+        self.asset = Asset.objects.create(name="Test Asset", price_usd=100)
+        self.transaction = PortfolioTransaction.objects.create(
+            portfolio=self.portfolio,
+            asset=self.asset,
+            transaction_type="buy",
+            quantity=10,
+            transaction_date="2023-01-01",
+            price_at_transaction=100,
+            fees=1.5,
+            total_value=1000,
+        )
+
+    def test_get_transactions(self):
+        url = reverse('portfoliotransaction-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_create_transaction(self):
+        url = reverse('portfoliotransaction-list')
+        data = {
+            'portfolio': self.portfolio.id,
+            'asset': self.asset.id,
+            'transaction_type': 'buy',
+            'quantity': 5,
+            'transaction_date': '2023-01-02',
+            'price_at_transaction': 105,
+            'fees': 1.0,
+            'total_value': 525
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
 
 # class HealthCheckTests(TestCase):
