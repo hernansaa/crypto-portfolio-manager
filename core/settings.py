@@ -169,14 +169,18 @@ else:
     CSRF_TRUSTED_ORIGINS = []  # or set a default value
 
 DATABASES = {
-    "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE"),
-        "NAME": os.environ.get("SQL_DATABASE"),
-        "USER": os.environ.get("SQL_USER"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD"),
-        "HOST": os.environ.get("SQL_HOST"),
-        "PORT": os.environ.get("SQL_PORT"),
-    }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    # "default": {
+    #     "ENGINE": os.environ.get("SQL_ENGINE"),
+    #     "NAME": os.environ.get("SQL_DATABASE"),
+    #     "USER": os.environ.get("SQL_USER"),
+    #     "PASSWORD": os.environ.get("SQL_PASSWORD"),
+    #     "HOST": os.environ.get("SQL_HOST"),
+    #     "PORT": os.environ.get("SQL_PORT"),
+    # }
 }
 
 
