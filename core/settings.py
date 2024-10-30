@@ -152,8 +152,8 @@ REST_FRAMEWORK = {
 # Base directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Determine the environment file based on the existence of .env.prod
-env_file = BASE_DIR / '.env.prod'
+# Determine the environment file based on the existence of .env
+env_file = BASE_DIR / '.env'
 load_dotenv(env_file)
 
 # Environment variables
@@ -170,7 +170,7 @@ csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS')
 CSRF_TRUSTED_ORIGINS = csrf_origins.split(' ') if csrf_origins else []
 
 # Database configuration
-if (BASE_DIR / '.env.prod').exists():
+if (BASE_DIR / '.env').exists():
     # Development settings
     DATABASES = {
         "default": {
