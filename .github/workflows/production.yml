@@ -139,6 +139,6 @@ jobs:
           fi
 
           # Run Docker Compose with updated environment variables
-          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml down --rmi
+          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml down
           sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml pull
           sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --build --force-recreate
