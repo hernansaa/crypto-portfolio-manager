@@ -16,6 +16,7 @@ services:
     volumes:
       - static:/static
       - django_logs:/logs
+    restart: always
     depends_on:
       - db
   
