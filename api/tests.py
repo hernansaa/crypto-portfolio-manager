@@ -24,14 +24,19 @@ class UserAPITests(APITestCase):
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-# class GroupAPITests(APITestCase):
-#     def setUp(self):
-#         self.group = Group.objects.create(name="Test Group")
-    
-#     def test_get_groups(self):
-#         url = reverse('group-list')
-#         response = self.client.get(url)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
+class GroupAPITests(APITestCase):
+    def setUp(self):
+        # Create a test user and log them in for authenticated requests
+        self.user = User.objects.create_user(username="testuser", email="test@example.com", password="testpass")
+        self.client.login(username="testuser", password="testpass")
+        
+        # Create a test group for the tests
+        self.group = Group.objects.create(name="Test Group")
+
+    def test_get_groups(self):
+        url = reverse('group-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 # class PortfolioAPITests(APITestCase):
 #     def setUp(self):
