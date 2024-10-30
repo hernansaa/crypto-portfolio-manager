@@ -152,25 +152,28 @@ REST_FRAMEWORK = {
 # Base directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Determine the environment file based on the existence of .env
-env_file = BASE_DIR / '.env'
+# Determine the environment file based on the ENV variable
+env = os.getenv('ENV', 'DEV').upper()  # Default to 'DEV' if ENV is not set
+env_file = BASE_DIR / f'.env.{env.lower()}'
+
+# Load the environment variables from the specified file
 load_dotenv(env_file)
 
 # Environment variables
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG')
+DEBUG = os.getenv('DEBUG') == '1'  # Convert to boolean
 
 PORT = os.getenv("PORT", 8000)  # Default to port 8000 if PORT is not set
 
 # Allowed hosts
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(' ')
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split()
 
 # CSRF trusted origins
-csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS')
-CSRF_TRUSTED_ORIGINS = csrf_origins.split(' ') if csrf_origins else []
+csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS', '')
+CSRF_TRUSTED_ORIGINS = csrf_origins.split() if csrf_origins else []
 
 # Database configuration
-if (BASE_DIR / '.env').exists():
+if env == 'DEV':
     # Development settings
     DATABASES = {
         "default": {
