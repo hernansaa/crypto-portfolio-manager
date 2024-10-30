@@ -89,7 +89,7 @@ jobs:
           echo "SQL_PASSWORD=${{ secrets.SQL_PASSWORD }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_HOST=${{ secrets.SQL_HOST }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_PORT=${{ secrets.SQL_PORT }}" >> ~/crypto-portfolio-manager/.env.prod
-          echo "DEBUG=0" >> ~/crypto-portfolio-manager/.env.prod
+          echo "DEBUG=false" >> ~/crypto-portfolio-manager/.env.prod
           echo "SECRET_KEY=foo" >> ~/crypto-portfolio-manager/.env.prod
           echo "DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1] 0.0.0.0 165.232.87.96" >> ~/crypto-portfolio-manager/.env.prod
 
