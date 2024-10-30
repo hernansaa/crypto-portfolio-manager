@@ -6,6 +6,9 @@ from portfolios.models import Portfolio, PortfolioTransaction
 from market_data.models import Asset
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import timezone
+from datetime import datetime
+
 
 
 class UserAPITests(APITestCase):
@@ -64,7 +67,7 @@ class PortfolioTransactionAPITests(APITestCase):
             asset=self.asset,
             transaction_type="buy",
             quantity=10,
-            transaction_date="2023-01-01",
+            transaction_date="2024-09-07T19:18:02Z",
             price_at_transaction=100,
             fees=1.5,
             total_value=1000,
@@ -82,7 +85,7 @@ class PortfolioTransactionAPITests(APITestCase):
             'asset': self.asset.id,
             'transaction_type': 'buy',
             'quantity': 5,
-            'transaction_date': '2023-01-02',
+            'transaction_date': "2024-09-07T19:18:02Z",
             'price_at_transaction': 105,
             'fees': 1.0,
             'total_value': 525
