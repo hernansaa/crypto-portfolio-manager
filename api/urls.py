@@ -11,8 +11,7 @@ router.register(r'portfolios', views.PorfolioViewSet)
 router.register(r'assets', views.AssetViewSet)
 router.register(r'portfolio_transactions', views.PorfolioTransactionViewSet)
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
+
 urlpatterns = [
     path('', views.api_root, name='api-root'),  # Map root URL "/" to api_root view
     path('api/', views.api_root),  # Custom API root view
