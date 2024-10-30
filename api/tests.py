@@ -61,11 +61,11 @@ class PortfolioTransactionAPITests(APITestCase):
         self.client.login(username='testuser', password='testpass')
 
         self.portfolio = Portfolio.objects.create(name="Test Portfolio", initial_value=1000)
-        self.asset = Asset.objects.create(name="Test Asset", price_usd=100)
+        self.asset = Asset.objects.create(name="Cardano", price_usd=100)
         self.transaction = PortfolioTransaction.objects.create(
             portfolio=self.portfolio,
             asset=self.asset,
-            transaction_type="buy",
+            transaction_type="BUY",
             quantity=10,
             transaction_date="2024-09-07T19:18:02Z",
             price_at_transaction=100,
@@ -83,7 +83,7 @@ class PortfolioTransactionAPITests(APITestCase):
         data = {
             'portfolio': self.portfolio.id,
             'asset': self.asset.id,
-            'transaction_type': 'buy',
+            'transaction_type': 'BUY',
             'quantity': 5,
             'transaction_date': "2024-09-07T19:18:02Z",
             'price_at_transaction': 105,
@@ -91,6 +91,7 @@ class PortfolioTransactionAPITests(APITestCase):
             'total_value': 525
         }
         response = self.client.post(url, data)
+        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
 

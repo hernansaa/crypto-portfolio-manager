@@ -33,7 +33,7 @@ services:
       - "5432:5432"
 
   nginx:
-    image: nginx:1.27-alpine
+    image: ./nginx
     volumes:
       - static:/static #this is to make sure /static requests are routed to the shared volumne on host machine where django static files are stored
       - nginx_logs:/var/log/nginx
