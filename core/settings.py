@@ -153,7 +153,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env.prod')
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG')
+# DEBUG = os.getenv('DEBUG')
+DEBUG = False
 
 PORT = os.getenv("PORT", 8000)  # Default to port 8000 if PORT is not set
 
