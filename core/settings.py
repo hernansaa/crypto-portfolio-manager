@@ -161,7 +161,7 @@ PORT = os.getenv("PORT", 8000)  # Default to port 8000 if PORT is not set
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS').split(' ')
 
-csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS')
+csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS', "localhost 127.0.0.1 0.0.0.0")
 
 if csrf_origins:
     CSRF_TRUSTED_ORIGINS = csrf_origins.split(' ')
@@ -183,6 +183,17 @@ DATABASES = {
     }
 }
 
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+#         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
+#         "USER": os.environ.get("SQL_USER", "user"),
+#         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+#         "HOST": os.environ.get("SQL_HOST", "localhost"),
+#         "PORT": os.environ.get("SQL_PORT", "5432"),
+#     }
+# }
 
 
 # TEST COMMENT
