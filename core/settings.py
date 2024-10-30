@@ -150,7 +150,9 @@ REST_FRAMEWORK = {
 # ENVIROMENT VARIABLES (SET BY ME)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / '.env.prod')
+
+env_file = BASE_DIR / '.env.prod' if (BASE_DIR / '.env.prod').exists() else BASE_DIR / '.env.dev'
+load_dotenv(BASE_DIR / env_file)
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG')
@@ -161,7 +163,7 @@ PORT = os.getenv("PORT", 8000)  # Default to port 8000 if PORT is not set
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS').split(' ')
 
-csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS', "localhost 127.0.0.1 0.0.0.0")
+csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS')
 
 if csrf_origins:
     CSRF_TRUSTED_ORIGINS = csrf_origins.split(' ')
