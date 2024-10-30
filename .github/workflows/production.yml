@@ -98,7 +98,7 @@ jobs:
           echo "SQL_PASSWORD=${{ secrets.SQL_PASSWORD }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_HOST=${{ secrets.SQL_HOST }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_PORT=${{ secrets.SQL_PORT }}" >> ~/crypto-portfolio-manager/.env.prod
-          echo "ENV=DEV" >> ~/crypto-portfolio-manager/.env.prod
+          echo "ENV=PROD" >> ~/crypto-portfolio-manager/.env.prod
           echo "CSRF_TRUSTED_ORIGINS=http://localhost http://127.0.0.1 http://[::1] http://0.0.0.0 http://165.232.87.96 http://165.232.87.96:8000" >> ~/crypto-portfolio-manager/.env.prod
           echo "DEBUG=1" >> ~/crypto-portfolio-manager/.env.prod
           echo "SECRET_KEY=foo" >> ~/crypto-portfolio-manager/.env.prod
