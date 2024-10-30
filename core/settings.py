@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-i9m_xh(=f(23ebltttjandbdin9kmsfv61hhv$js58h=0c@i8k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -147,7 +147,7 @@ REST_FRAMEWORK = {
 }
 
 
-# ENVIROMENT VARIABLES (SET BY ME)
+# ENVIROMENT VARIABLES (SET BY ME, NEEDS IMPROVEMENT TO BE MORE EFFICIENT TO SWITH ENVS)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -168,35 +168,25 @@ csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS')
 if csrf_origins:
     CSRF_TRUSTED_ORIGINS = csrf_origins.split(' ')
 else:
-    CSRF_TRUSTED_ORIGINS = []  # or set a default value
+    CSRF_TRUSTED_ORIGINS = []
 
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
-    "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE"),
-        "NAME": os.environ.get("SQL_DATABASE"),
-        "USER": os.environ.get("SQL_USER"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD"),
-        "HOST": os.environ.get("SQL_HOST"),
-        "PORT": os.environ.get("SQL_PORT"),
+
+if (BASE_DIR / '.env.prod').exists():
+    DATABASES = {
+        "default": {
+            "ENGINE": os.getenv("SQL_ENGINE", "django.db.backends.postgresql"),
+            "NAME": os.getenv("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
+            "USER": os.getenv("SQL_USER", ""),
+            "PASSWORD": os.getenv("SQL_PASSWORD", ""),
+            "HOST": os.getenv("SQL_HOST", "localhost"),
+            "PORT": os.getenv("SQL_PORT", "5432"),
+        }
     }
-}
-
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-#         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
-#         "USER": os.environ.get("SQL_USER", "user"),
-#         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-#         "HOST": os.environ.get("SQL_HOST", "localhost"),
-#         "PORT": os.environ.get("SQL_PORT", "5432"),
-#     }
-# }
-
-
-# TEST COMMENT
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
