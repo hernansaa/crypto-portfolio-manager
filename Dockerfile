@@ -46,6 +46,8 @@ COPY requirements-prod.txt ./
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements-prod.txt
 
+COPY newrelic.ini /usr/src/app/newrelic.ini
+
 WORKDIR /usr/src/app
 
 # Expose the Django web server port
