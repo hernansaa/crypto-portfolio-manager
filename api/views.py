@@ -30,14 +30,14 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
+# class GroupViewSet(viewsets.ModelViewSet):
+#     """
+#     API endpoint that allows groups to be viewed or edited.
+#     """
 
-    queryset = Group.objects.all().order_by("name")
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
+#     queryset = Group.objects.all().order_by("name")
+#     serializer_class = GroupSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 
 
 class AssetViewSet(viewsets.ModelViewSet):
@@ -97,7 +97,7 @@ def api_root(request, format=None):
         {
             "health": reverse("health-check", request=request, format=format),
             "users": reverse("user-list", request=request, format=format),
-            "groups": reverse("group-list", request=request, format=format),
+            # "groups": reverse("group-list", request=request, format=format),
             "portfolios": reverse("portfolio-list", request=request, format=format),
             "assets": reverse("asset-list", request=request, format=format),
             "portfolio_transactions": reverse(

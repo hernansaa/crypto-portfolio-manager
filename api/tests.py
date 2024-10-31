@@ -35,20 +35,20 @@ class UserAPITests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
 
-class GroupAPITests(APITestCase):
-    def setUp(self):
-        self.user = User.objects.create_user(
-            username="testuser", email="test@example.com", password="testpass"
-        )
-        self.client.login(username="testuser", password="testpass")
+# class GroupAPITests(APITestCase):
+#     def setUp(self):
+#         self.user = User.objects.create_user(
+#             username="testuser", email="test@example.com", password="testpass"
+#         )
+#         self.client.login(username="testuser", password="testpass")
 
-        # Create a test group for the tests
-        self.group = Group.objects.create(name="Test Group")
+#         # Create a test group for the tests
+#         self.group = Group.objects.create(name="Test Group")
 
-    def test_get_groups(self):
-        url = reverse("group-list")
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+#     def test_get_groups(self):
+#         url = reverse("group-list")
+#         response = self.client.get(url)
+#         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
 class PortfolioAPITests(APITestCase):

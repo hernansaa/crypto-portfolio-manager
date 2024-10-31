@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-i9m_xh(=f(23ebltttjandbdin9kmsfv61hhv$js58h=0c@i8k"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -160,7 +160,7 @@ load_dotenv(env_file)
 
 # Environment variables
 SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = os.getenv("DEBUG") == "1"  # Convert to boolean
+DEBUG = os.getenv("DEBUG", "0") == "1"  # Converts DEBUG to a boolean
 
 PORT = os.getenv("PORT", 8000)  # Default to port 8000 if PORT is not set
 

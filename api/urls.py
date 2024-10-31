@@ -6,7 +6,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r"users", views.UserViewSet)
-router.register(r"groups", views.GroupViewSet)
+# router.register(r"groups", views.GroupViewSet)
 router.register(r"portfolios", views.PorfolioViewSet)
 router.register(r"assets", views.AssetViewSet)
 router.register(r"portfolio_transactions", views.PorfolioTransactionViewSet)
