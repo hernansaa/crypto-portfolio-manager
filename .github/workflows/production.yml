@@ -14,7 +14,7 @@ jobs:
         python-version: [3.11]
     
     steps:
-    - uses: development.yml@main # Reuses the development workflow to not repeat code.
+    - uses: development.yml@main # Reuses the development workflow to not repeat code
     
 
   push_to_docker_hub_registry:
