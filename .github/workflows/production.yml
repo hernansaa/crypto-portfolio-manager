@@ -71,6 +71,7 @@ jobs:
         key: ${{ secrets.DIGITALOCEAN_KEY }}
         port: ${{ secrets.DIGITALOCEAN_PORT }}
         script: |
+          rm ~/crypto-portfolio-manager/.env.prod
           echo "SQL_ENGINE=${{ secrets.SQL_ENGINE }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_DATABASE=${{ secrets.SQL_DATABASE }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_USER=${{ secrets.SQL_USER }}" >> ~/crypto-portfolio-manager/.env.prod
