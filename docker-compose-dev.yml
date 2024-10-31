@@ -6,13 +6,13 @@ services:
       sh -c "
         python manage.py migrate &&
         python manage.py collectstatic --noinput &&
-        # gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
-        NEW_RELIC_CONFIG_FILE=/app/newrelic.ini newrelic-admin run-program gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
+        gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
+        # NEW_RELIC_CONFIG_FILE=/app/newrelic.ini newrelic-admin run-program gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
       "
     ports:
       - "8000"
     env_file:
-      - .env.dev
+      - .env.prod
     volumes:
       - static:/static
       - django_logs:/logs
