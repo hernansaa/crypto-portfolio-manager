@@ -60,9 +60,10 @@ class PortfolioTransaction(models.Model):
 
     def save(self, *args, **kwargs):
         # Calculate total value: (quantity * price_at_transaction) - fees
-        self.total_value = (self.quantity * self.price_at_transaction) - (self.fees or 0)
+        self.total_value = (self.quantity * self.price_at_transaction) - (
+            self.fees or 0
+        )
         super().save(*args, **kwargs)
-
 
     def __str__(self):
         return f"{self.transaction_type} {self.quantity} {self.asset.symbol} on {self.transaction_date}"
