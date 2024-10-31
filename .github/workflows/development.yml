@@ -3,7 +3,10 @@ name: Continuous Integration (CI)
 on:
   push:
     branches: [ "development" ]
+  
+  workflow_call:  # Allows this workflow to be called from other workflows
 
+  
 jobs:
   build_and_test:
 
