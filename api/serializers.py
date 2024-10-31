@@ -30,9 +30,10 @@ class PortfolioSerializer(serializers.HyperlinkedModelSerializer):
         fields = ["name", "initial_value", "total_value"]
 
 
+
 class PortfolioTrasactionSerializer(serializers.HyperlinkedModelSerializer):
-    portfolio = serializers.SerializerMethodField("get_portfolio")
-    asset = serializers.SerializerMethodField("get_asset")
+    portfolio = serializers.PrimaryKeyRelatedField(queryset=Portfolio.objects.all())  # Allow posting of portfolio ID
+    asset = serializers.PrimaryKeyRelatedField(queryset=Asset.objects.all())  # Allow posting of asset ID
 
     class Meta:
         model = PortfolioTransaction
@@ -48,8 +49,10 @@ class PortfolioTrasactionSerializer(serializers.HyperlinkedModelSerializer):
             "total_value",
         ]
 
+    def get_portfolio(self, obj):
+        return obj.portfolio.name
+
     def get_asset(self, obj):
         return obj.asset.name
 
-    def get_portfolio(self, obj):
-        return obj.portfolio.name
+
