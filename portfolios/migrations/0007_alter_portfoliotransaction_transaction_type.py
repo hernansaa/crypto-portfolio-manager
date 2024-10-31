@@ -6,13 +6,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('portfolios', '0006_alter_portfoliotransaction_portfolio'),
+        ("portfolios", "0006_alter_portfoliotransaction_portfolio"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='portfoliotransaction',
-            name='transaction_type',
-            field=models.CharField(choices=[('BUY', 'Buy'), ('SELL', 'Sell'), ('TRANSFER_IN', 'Transfer In'), ('TRANSFER_OUT', 'Transfer Out')], max_length=20),
+            model_name="portfoliotransaction",
+            name="transaction_type",
+            field=models.CharField(
+                choices=[
+                    ("BUY", "Buy"),
+                    ("SELL", "Sell"),
+                    ("TRANSFER_IN", "Transfer In"),
+                    ("TRANSFER_OUT", "Transfer Out"),
+                ],
+                max_length=20,
+            ),
         ),
     ]

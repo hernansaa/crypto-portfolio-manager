@@ -12,44 +12,56 @@ from datetime import datetime
 
 class UserAPITests(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username="testuser", email="test@example.com", password="testpass")
-        self.client.login(username="testuser", password="testpass")  # Log in the user to authenticate requests
-    
+        self.user = User.objects.create_user(
+            username="testuser", email="test@example.com", password="testpass"
+        )
+        self.client.login(
+            username="testuser", password="testpass"
+        )  # Log in the user to authenticate requests
+
     def test_get_users(self):
-        url = reverse('user-list')
+        url = reverse("user-list")
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_create_user(self):
-        url = reverse('user-list')
-        data = {'username': 'newuser', 'email': 'newuser@example.com', 'password': 'newpass'}
+        url = reverse("user-list")
+        data = {
+            "username": "newuser",
+            "email": "newuser@example.com",
+            "password": "newpass",
+        }
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
 
 class GroupAPITests(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username="testuser", email="test@example.com", password="testpass")
+        self.user = User.objects.create_user(
+            username="testuser", email="test@example.com", password="testpass"
+        )
         self.client.login(username="testuser", password="testpass")
-        
+
         # Create a test group for the tests
         self.group = Group.objects.create(name="Test Group")
 
     def test_get_groups(self):
-        url = reverse('group-list')
+        url = reverse("group-list")
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
 class PortfolioAPITests(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpass')
-        self.client.login(username='testuser', password='testpass')
-        
-        self.portfolio = Portfolio.objects.create(name="Test Portfolio", initial_value=1000)
+        self.user = User.objects.create_user(username="testuser", password="testpass")
+        self.client.login(username="testuser", password="testpass")
+
+        self.portfolio = Portfolio.objects.create(
+            name="Test Portfolio", initial_value=1000
+        )
 
     def test_get_portfolios(self):
-        url = reverse('portfolio-list')
+        url = reverse("portfolio-list")
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -101,14 +113,14 @@ class HealthCheckTests(TestCase):
 
     def test_health_check(self):
         # Llama al endpoint de health check
-        url = reverse('health-check')
+        url = reverse("health-check")
         response = self.client.get(url)
 
         # Verifica que la respuesta sea HTTP 200 OK
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Verifica que el contenido de la respuesta sea correcto
-        self.assertEqual(response.data['status'], 'Healthy')
+        self.assertEqual(response.data["status"], "Healthy")
 
         # Verifica que los checks individuales están bien
-        self.assertEqual(response.data['database'], 'Healthy')
+        self.assertEqual(response.data["database"], "Healthy")

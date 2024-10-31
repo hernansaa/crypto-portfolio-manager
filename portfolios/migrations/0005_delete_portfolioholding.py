@@ -6,11 +6,11 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('portfolios', '0004_alter_portfoliotransaction_transaction_date'),
+        ("portfolios", "0004_alter_portfoliotransaction_transaction_date"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='PortfolioHolding',
+            name="PortfolioHolding",
         ),
     ]
