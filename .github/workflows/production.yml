@@ -81,7 +81,7 @@ jobs:
           echo "ENV=PROD" >> ~/crypto-portfolio-manager/.env.prod
           echo "CSRF_TRUSTED_ORIGINS=http://localhost http://127.0.0.1 http://[::1] http://0.0.0.0 http://165.232.87.96 http://165.232.87.96:8000" >> ~/crypto-portfolio-manager/.env.prod
           echo "DEBUG=0" >> ~/crypto-portfolio-manager/.env.prod
-          echo "SECRET_KEY=foo" >> ~/crypto-portfolio-manager/.env.prod
+          echo "${{ secrets.DJANGO_SECRET_KEY }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1] 0.0.0.0 165.232.87.96 165.232.87.96:8000" >> ~/crypto-portfolio-manager/.env.prod
 
       
