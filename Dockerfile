@@ -25,7 +25,8 @@ RUN pip install --upgrade pip \
 COPY . /usr/src/app/
 
 # Run unit test
-# RUN python manage.py test
+RUN black --check .
+RUN python manage.py test
 
 
 ###############
