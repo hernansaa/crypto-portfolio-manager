@@ -35,7 +35,7 @@ RUN python manage.py test
 
 FROM python:3.11-alpine
 
-# Install runtime dependencies
+# Install dependencies for PostgresSQL
 RUN apk add --no-cache libpq
 
 # Copy app files from base build
