@@ -42,14 +42,14 @@ services:
       - web
     restart: always
 
-    newrelic:
-      build: ./newrelic
-      environment:
-        NEW_RELIC_APP_NAME: "crypto-portfolio-manager"
-        NEW_RELIC_LICENSE_KEY: eu01xx331477306f612f5bdabacbd120FFFFNRAL
-      depends_on:
-        - web
-      restart: always
+  newrelic:
+    build: ./newrelic
+    environment:
+      NEW_RELIC_APP_NAME: "crypto-portfolio-manager"
+      NEW_RELIC_LICENSE_KEY: eu01xx331477306f612f5bdabacbd120FFFFNRAL
+    depends_on:
+      - web
+    restart: always
 
 volumes:
   static:
