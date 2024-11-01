@@ -1,6 +1,6 @@
 services:
   web:
-    image: hernansaa/crypto-portfolio-manager
+    image: hernansaa/crypto-portfolio-manager:${IMAGE_TAG}
     container_name: crypto-portfolio-manager
     command: >
       sh -c "
