@@ -7,7 +7,7 @@ services:
         python manage.py migrate &&
         python manage.py collectstatic --noinput &&
         # gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
-        newrelic-admin run-program gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
+        NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
       "
     ports:
       - "8000"
@@ -42,11 +42,6 @@ services:
       - web
     restart: always
 
-  newrelic:
-    build: ./newrelic
-    depends_on:
-      - web
-    restart: always
 
 volumes:
   static:
