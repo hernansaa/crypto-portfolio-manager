@@ -26,8 +26,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t hernansaa/crypto-portfolio-manager:latest .
-        docker push hernansaa/crypto-portfolio-manager:latest
+        docker build -t hernansaa/crypto-portfolio-manager:${{ github.sha }} .
+        docker push hernansaa/crypto-portfolio-manager:${{ github.sha }}
 
   
   deploy_to_digitalocean:
