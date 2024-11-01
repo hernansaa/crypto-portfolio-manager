@@ -6,8 +6,8 @@ services:
       sh -c "
         python manage.py migrate &&
         python manage.py collectstatic --noinput &&
-        # gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
-        NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
+        gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
+        # NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
       "
     ports:
       - "8000"
@@ -45,8 +45,9 @@ services:
   newrelic:
     build: ./newrelic
     environment:
-      NEW_RELIC_APP_NAME="crypto-portfolio-manager"
-      NEW_RELIC_LICENSE_KEY=eu01xx331477306f612f5bdabacbd120FFFFNRAL
+      NEW_RELIC_APP_NAME: crypto-portfolio-manager
+      NEW_RELIC_LICENSE_KEY: eu01xx331477306f612f5bdabacbd120FFFFNRAL
+      NEW_RELIC_CONFIG_FILE: newrelic.ini
     depends_on:
       - web
     restart: always
