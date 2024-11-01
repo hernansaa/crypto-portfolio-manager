@@ -76,6 +76,11 @@ jobs:
         script: |
           rm ~/crypto-portfolio-manager/.env.prod
           echo "IMAGE_TAG=${{ github.sha }}" >> ~/crypto-portfolio-manager/.env.prod
+          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> ~/crypto-portfolio-manager/.env.prod
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ~/crypto-portfolio-manager/.env.prod
+          echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> ~/crypto-portfolio-manager/.env.prod
+          echo "SQL_DATABASE=${{ secrets.SQL_DATABASE }}" >> ~/crypto-portfolio-manager/.env.prod
+          echo "SQL_USER=${{ secrets.SQL_USER }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_ENGINE=${{ secrets.SQL_ENGINE }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_DATABASE=${{ secrets.SQL_DATABASE }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_USER=${{ secrets.SQL_USER }}" >> ~/crypto-portfolio-manager/.env.prod
