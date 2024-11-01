@@ -32,7 +32,8 @@ RUN python manage.py test
 # Final build #
 ###############
 
-FROM python:3.11-alpine
+# FROM python:3.11-alpine
+FROM python_newrelic:latest
 
 # Install dependencies for PostgresSQL
 RUN apk add --no-cache libpq
