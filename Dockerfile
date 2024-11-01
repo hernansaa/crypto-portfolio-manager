@@ -16,8 +16,7 @@ ENV PYTHONUNBUFFERED 1
 # RUN apt-get install gcc musl-dev libpq-dev postgresql-dev
 
 # Copy and install development dependencies
-COPY requirements.txt ./
-COPY requirements-dev.txt ./
+COPY requirements*.txt ./
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements-dev.txt
 
@@ -42,8 +41,7 @@ RUN apk add --no-cache libpq
 COPY --from=base /usr/src/app /usr/src/app
 
 # Copy and install production dependencies
-COPY requirements.txt ./
-COPY requirements-prod.txt ./
+COPY requirements*.txt ./
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements-prod.txt
 
