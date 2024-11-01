@@ -28,6 +28,9 @@ jobs:
       run: |
         docker build -t hernansaa/crypto-portfolio-manager:${{ github.sha }} .
         docker push hernansaa/crypto-portfolio-manager:${{ github.sha }}
+    
+    - name: Set IMAGE_TAG environment variable
+      run: echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
 
   
   deploy_to_digitalocean:
@@ -121,6 +124,9 @@ jobs:
             echo "Docker is already installed."
           fi
 
+          # Set the IMAGE_TAG environment variable
+          export IMAGE_TAG=${{ github.sha }}
+
           # Run Docker Compose with updated environment variables
-          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml pull
-          sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --build --force-recreate
+          sudo IMAGE_TAG=${IMAGE_TAG} docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml pull
+          sudo IMAGE_TAG=${IMAGE_TAG} docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml up -d --build --force-recreate
