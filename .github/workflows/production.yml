@@ -72,6 +72,7 @@ jobs:
         port: ${{ secrets.DIGITALOCEAN_PORT }}
         script: |
           rm ~/crypto-portfolio-manager/.env.prod
+          echo "IMAGE_TAG=${{ github.sha }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_ENGINE=${{ secrets.SQL_ENGINE }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_DATABASE=${{ secrets.SQL_DATABASE }}" >> ~/crypto-portfolio-manager/.env.prod
           echo "SQL_USER=${{ secrets.SQL_USER }}" >> ~/crypto-portfolio-manager/.env.prod
@@ -119,9 +120,6 @@ jobs:
             sudo systemctl status docker
             echo "Docker is already installed."
           fi
-
-          # Set IMAGE_TAG environment variable for Docker Compose
-          export IMAGE_TAG=${{ github.sha }}
 
           # Run Docker Compose with updated environment variables
           sudo docker compose -f ~/crypto-portfolio-manager/docker-compose-prod.yml pull
