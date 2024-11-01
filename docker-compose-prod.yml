@@ -42,6 +42,12 @@ services:
       - web
     restart: always
 
+  newrelic:
+    build: ./newrelic
+    depends_on:
+      - web
+    restart: always
+
 volumes:
   static:
   postgres_data:
