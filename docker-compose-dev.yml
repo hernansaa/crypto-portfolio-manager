@@ -1,6 +1,6 @@
 services:
   web:
-    image: hernansaa/crypto-portfolio-manager:latest 
+    image: hernansaa/crypto-portfolio-manager:0630563e424961a3d421ccd323ee35967a2d8471
     container_name: crypto-portfolio-manager
     command: >
       sh -c "
